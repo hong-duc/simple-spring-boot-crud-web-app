@@ -1,0 +1,33 @@
+<html layout:decorator="layout">
+    <div layout:fragment="content">
+        <a class="btn btn-primary" href="/posts/new">Add new post</a>
+
+        <table class="table table-striped" id="posts_list">
+            <thead>
+                <tr>
+                    <th>Comments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-th-each="post: ${posts}">
+                    <td class="message" data-th-text="${post.message}"></td>
+                    <td>
+                        <a class="delete" th:href="@{'/posts/{id}/delete'(id=${post.id})}" th:attr="name=${post.message}">
+                            <span class="fa-stack">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="edit" th:href="@{'/posts/{id}/edit'(id=${post.id})}" th:attr="name=${post.message}">
+                            <span class="fa-stack">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</html>
